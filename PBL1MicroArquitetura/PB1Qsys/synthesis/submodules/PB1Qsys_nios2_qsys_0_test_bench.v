@@ -1,4 +1,4 @@
-//Legal Notice: (C)2019 Altera Corporation. All rights reserved.  Your
+//Legal Notice: (C)2020 Altera Corporation. All rights reserved.  Your
 //use of Altera Corporation's design tools, logic functions and other
 //software and tools, and its AMPP partner logic functions, and any
 //output files any of the foregoing (including device programming or
@@ -66,7 +66,7 @@ module PB1Qsys_nios2_qsys_0_test_bench (
   input   [  4: 0] R_dst_regnum;
   input            R_wr_dst_reg;
   input            W_valid;
-  input   [ 95: 0] W_vinst;
+  input   [127: 0] W_vinst;
   input   [ 31: 0] W_wr_data;
   input   [ 31: 0] av_ld_data_aligned_unfiltered;
   input            clk;
@@ -118,10 +118,10 @@ module PB1Qsys_nios2_qsys_0_test_bench (
   wire             D_op_flushi;
   wire             D_op_flushp;
   wire             D_op_hbreak;
-  wire             D_op_iniciarlcd_0;
   wire             D_op_initd;
   wire             D_op_initda;
   wire             D_op_initi;
+  wire             D_op_initialize_lcd_0;
   wire             D_op_intr;
   wire             D_op_jmp;
   wire             D_op_jmpi;
@@ -369,7 +369,7 @@ module PB1Qsys_nios2_qsys_0_test_bench (
   assign D_op_rsvx56 = D_op_opx & (D_iw_opx == 56);
   assign D_op_rsvx60 = D_op_opx & (D_iw_opx == 60);
   assign D_op_rsvx63 = D_op_opx & (D_iw_opx == 63);
-  assign D_op_iniciarlcd_0 = D_op_custom & 1'b1;
+  assign D_op_initialize_lcd_0 = D_op_custom & 1'b1;
   assign D_op_opx = D_iw_op == 58;
   assign D_op_custom = D_iw_op == 50;
   assign test_has_ended = 1'b0;
