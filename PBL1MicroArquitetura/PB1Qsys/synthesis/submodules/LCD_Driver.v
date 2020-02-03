@@ -1,6 +1,4 @@
-//Interface de envio de dados para LCD 16X2
-//Autore Gabriel Miranda
-// 08/03/2019
+
 module lcd_driver (dataa, datab, result, clk, clk_en, start, reset, done, rs, rw, en, db);
 
 	input [31:0] dataa;

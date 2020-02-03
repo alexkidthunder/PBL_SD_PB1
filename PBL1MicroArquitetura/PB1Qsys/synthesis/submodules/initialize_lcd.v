@@ -28,8 +28,10 @@ output lcd_rw;
 output reg [7:0] lcd_data;
 output reg lcd_enable;
 
+localparam functionSet = 2'b00, EntryMode = 2'b01, Display = 2'b10,  finish = 2'b11;
+
 reg [2:0] state;
-reg [15:0] counter;
+reg [23:0] counter = 24'h000000;
 
 assign lcd_rw = 1'b0;
 
@@ -40,92 +42,40 @@ always @ (posedge clk or posedge reset) begin
 		state   <= 3'b0;
 		lcd_rs  <= 1'b0;
 		lcd_enable  <= 1'b0;
-		lcd_data  <= 8'b0;
+		lcd_data  <= 8'b00000000;
 	end 
 	else begin
-		if(clk_en && datab == 32'd0) begin
 				case (state)
-				3'b001:begin //initializing stage 1, Return Home: Set DDRAM address to 8'h00
-					done <= 1'b0;
-					lcd_enable <= 1'b1;
-					if (start) begin
-						state <= 3'b010;
+					functionSet:begin
+						done <= 1'b0;
+						lcd_enable <= 1'b1;
 						lcd_rs <= 1'b0;
-						lcd_data <= 8'h02;
+						lcd_data <= 8'b00111000;
 						counter <= 16'd0;
-					end else begin
-						state <= 3'b001;
+						state <= EntryMode;
 					end
-				end
-				
-				3'b010:begin //initializing stage 2, Send Function Set
-					done <= 1'b0;
-					lcd_enable <= 1'b1;
-					if (counter == 16'd50_000) begin
-						state <= 3'b011;
-						lcd_data <= 8'h38;
-						counter <= 16'd0;
-					end else begin
-						counter <= counter + 1'd1;
-						state <= 3'b010;
+					EntryMode:begin 
+						done <= 1'b0;
+						lcd_enable <= 1'b0;
+						lcd_rs <= 1'b0;
+						lcd_data <= 8'b00000110;
+						state <= Display;
+					end 
+					Display:begin 
+						done <= 1'b1;
+						lcd_enable <= 1'b1;
+						lcd_rs <= 1'b1;
+						lcd_data <= 8'b00001111;
+						state <= finish;
 					end
-				end
-				
-				3'b011:begin //initializing stage 3, Send Display On/Off Control
-					done <= 1'b0;
-					lcd_enable <= 1'b1;
-					if (counter == 16'd50_000) begin
-						state <= 3'b100;
-						lcd_data <= 8'h0C;
-						counter <= 16'd0;
-					end else begin
-						counter <= counter + 1'd1;
-						state <= 3'b011;
-					end	
-				end
-				
-				3'b100:begin //initializing stage 4, Send entry mode set
-					done <= 1'b0;
-					lcd_enable <= 1'b1;
-					if (counter == 16'd50_000) begin
-						state <= 3'b101;
-						lcd_data <= 8'h06;
-						counter <= 16'd0;
-					end else begin
-						counter <= counter + 1'd1;
-						state <= 3'b100;
-					end
-				end
-				
-				3'b101:begin //initializing stage 5, Send display clear
-					done <= 1'b0;
-					lcd_enable <= 1'b1;
-					if (counter == 16'd50_000) begin
-						state <= 3'b110;
-						lcd_data <= 8'h01;
-						counter <= 16'd0;
-					end else begin
-						counter <= counter + 1'd1;
-						state <= 3'b101;
-					end
-				end
-				
-				3'b110:begin //initializing next stage. deve enviar a imagem pro lcd
-					if (counter == 16'd50_000) begin
+					finish:begin 
 						done <= 1'b1;
 						lcd_enable <= 1'b0;
+						lcd_rs <= 1'b0;
 						result <= 1'b1;
-						state <= 3'b111; // indica que acabou a inicialização
-						counter <= 16'd0;
-					end else begin
-						counter <= counter + 1'd1;
-					end	
-				end	
-				
-			endcase
-		end
+					end
+				endcase
+		end//2if
 	end//else
-end//always
-
-
+	
 endmodule

@@ -513,7 +513,7 @@ defparam PB1Qsys_nios2_qsys_0_ociram_sp_ram.lpm_file = "PB1Qsys_nios2_qsys_0_oci
 //defparam PB1Qsys_nios2_qsys_0_ociram_sp_ram.lpm_file = "PB1Qsys_nios2_qsys_0_ociram_default_contents.mif";
 //synthesis read_comments_as_HDL off
   assign cfgrom_readdata = (MonAReg[4 : 2] == 3'd0)? 32'h00000020 :
-    (MonAReg[4 : 2] == 3'd1)? 32'h00000e0e :
+    (MonAReg[4 : 2] == 3'd1)? 32'h00000d0d :
     (MonAReg[4 : 2] == 3'd2)? 32'h00040000 :
     (MonAReg[4 : 2] == 3'd3)? 32'h00000100 :
     (MonAReg[4 : 2] == 3'd4)? 32'h20000000 :
@@ -951,7 +951,7 @@ module PB1Qsys_nios2_qsys_0_nios2_oci_xbrk (
   output           xbrk_trigout;
   input            D_valid;
   input            E_valid;
-  input   [ 11: 0] F_pc;
+  input   [ 10: 0] F_pc;
   input            clk;
   input            reset_n;
   input            trigger_state_0;
@@ -968,7 +968,7 @@ module PB1Qsys_nios2_qsys_0_nios2_oci_xbrk (
   reg              E_xbrk_traceoff;
   reg              E_xbrk_traceon;
   reg              E_xbrk_trigout;
-  wire    [ 13: 0] cpu_i_address;
+  wire    [ 12: 0] cpu_i_address;
   wire             xbrk0_armed;
   wire             xbrk0_break_hit;
   wire             xbrk0_goto0_hit;
@@ -1154,7 +1154,7 @@ module PB1Qsys_nios2_qsys_0_nios2_oci_dbrk (
                                            )
 ;
 
-  output  [ 13: 0] cpu_d_address;
+  output  [ 12: 0] cpu_d_address;
   output           cpu_d_read;
   output  [ 31: 0] cpu_d_readdata;
   output           cpu_d_wait;
@@ -1170,14 +1170,14 @@ module PB1Qsys_nios2_qsys_0_nios2_oci_dbrk (
   input   [ 31: 0] E_st_data;
   input   [ 31: 0] av_ld_data_aligned_filtered;
   input            clk;
-  input   [ 13: 0] d_address;
+  input   [ 12: 0] d_address;
   input            d_read;
   input            d_waitrequest;
   input            d_write;
   input            debugack;
   input            reset_n;
 
-  wire    [ 13: 0] cpu_d_address;
+  wire    [ 12: 0] cpu_d_address;
   wire             cpu_d_read;
   wire    [ 31: 0] cpu_d_readdata;
   wire             cpu_d_wait;
@@ -1722,7 +1722,7 @@ module PB1Qsys_nios2_qsys_0_nios2_oci_dtrace (
   output  [ 35: 0] atm;
   output  [ 35: 0] dtm;
   input            clk;
-  input   [ 13: 0] cpu_d_address;
+  input   [ 12: 0] cpu_d_address;
   input            cpu_d_read;
   input   [ 31: 0] cpu_d_readdata;
   input            cpu_d_wait;
@@ -2701,12 +2701,12 @@ module PB1Qsys_nios2_qsys_0_nios2_oci (
   input            D_valid;
   input   [ 31: 0] E_st_data;
   input            E_valid;
-  input   [ 11: 0] F_pc;
+  input   [ 10: 0] F_pc;
   input   [  8: 0] address_nxt;
   input   [ 31: 0] av_ld_data_aligned_filtered;
   input   [  3: 0] byteenable_nxt;
   input            clk;
-  input   [ 13: 0] d_address;
+  input   [ 12: 0] d_address;
   input            d_read;
   input            d_waitrequest;
   input            d_write;
@@ -2727,7 +2727,7 @@ module PB1Qsys_nios2_qsys_0_nios2_oci (
   wire    [ 31: 0] break_readreg;
   reg     [  3: 0] byteenable;
   wire             clkx2;
-  wire    [ 13: 0] cpu_d_address;
+  wire    [ 12: 0] cpu_d_address;
   wire             cpu_d_read;
   wire    [ 31: 0] cpu_d_readdata;
   wire             cpu_d_wait;
@@ -3231,12 +3231,12 @@ module PB1Qsys_nios2_qsys_0 (
   output           W_ci_estatus;
   output  [ 31: 0] W_ci_ipending;
   output           W_ci_status;
-  output  [ 13: 0] d_address;
+  output  [ 12: 0] d_address;
   output  [  3: 0] d_byteenable;
   output           d_read;
   output           d_write;
   output  [ 31: 0] d_writedata;
-  output  [ 13: 0] i_address;
+  output  [ 12: 0] i_address;
   output           i_read;
   output           jtag_debug_module_debugaccess_to_roms;
   output  [ 31: 0] jtag_debug_module_readdata;
@@ -3304,7 +3304,7 @@ module PB1Qsys_nios2_qsys_0 (
   wire             D_ctrl_unsigned_lo_imm16;
   wire             D_ctrl_wrctl_inst;
   wire    [  4: 0] D_dst_regnum;
-  wire    [127: 0] D_inst;
+  wire    [ 79: 0] D_inst;
   reg     [ 31: 0] D_iw /* synthesis ALTERA_IP_DEBUG_VISIBLE = 1 */;
   wire    [  4: 0] D_iw_a;
   wire    [  4: 0] D_iw_b;
@@ -3322,7 +3322,7 @@ module PB1Qsys_nios2_qsys_0 (
   wire    [  5: 0] D_iw_opx;
   wire    [  4: 0] D_iw_shift_imm5;
   wire    [  4: 0] D_iw_trap_break_imm5;
-  wire    [ 11: 0] D_jmp_direct_target_waddr;
+  wire    [ 10: 0] D_jmp_direct_target_waddr;
   wire    [  1: 0] D_logic_op;
   wire    [  1: 0] D_logic_op_raw;
   wire             D_mem16;
@@ -3369,7 +3369,6 @@ module PB1Qsys_nios2_qsys_0 (
   wire             D_op_initd;
   wire             D_op_initda;
   wire             D_op_initi;
-  wire             D_op_initialize_lcd_0;
   wire             D_op_intr;
   wire             D_op_jmp;
   wire             D_op_jmpi;
@@ -3436,6 +3435,7 @@ module PB1Qsys_nios2_qsys_0 (
   wire             D_op_rsvx56;
   wire             D_op_rsvx60;
   wire             D_op_rsvx63;
+  wire             D_op_shortlcd_0;
   wire             D_op_sll;
   wire             D_op_slli;
   wire             D_op_sra;
@@ -3458,7 +3458,7 @@ module PB1Qsys_nios2_qsys_0 (
   wire             D_op_xorhi;
   wire             D_op_xori;
   reg              D_valid;
-  wire    [127: 0] D_vinst;
+  wire    [ 79: 0] D_vinst;
   wire             D_wr_dst_reg;
   wire    [ 31: 0] E_alu_result;
   reg              E_alu_sub;
@@ -3481,7 +3481,7 @@ module PB1Qsys_nios2_qsys_0 (
   wire    [ 31: 0] E_logic_result;
   wire             E_logic_result_is_0;
   wire             E_lt;
-  wire    [ 13: 0] E_mem_baddr;
+  wire    [ 12: 0] E_mem_baddr;
   wire    [  3: 0] E_mem_byte_en;
   reg              E_new_inst;
   reg     [  4: 0] E_shift_rot_cnt;
@@ -3497,7 +3497,7 @@ module PB1Qsys_nios2_qsys_0 (
   wire             E_st_stall;
   wire             E_stall;
   reg              E_valid;
-  wire    [127: 0] E_vinst;
+  wire    [ 79: 0] E_vinst;
   wire             E_wrctl_bstatus;
   wire             E_wrctl_estatus;
   wire             E_wrctl_ienable;
@@ -3522,7 +3522,7 @@ module PB1Qsys_nios2_qsys_0 (
   wire             F_av_mem16;
   wire             F_av_mem32;
   wire             F_av_mem8;
-  wire    [127: 0] F_inst;
+  wire    [ 79: 0] F_inst;
   wire    [ 31: 0] F_iw;
   wire    [  4: 0] F_iw_a;
   wire    [  4: 0] F_iw_b;
@@ -3584,7 +3584,6 @@ module PB1Qsys_nios2_qsys_0 (
   wire             F_op_initd;
   wire             F_op_initda;
   wire             F_op_initi;
-  wire             F_op_initialize_lcd_0;
   wire             F_op_intr;
   wire             F_op_jmp;
   wire             F_op_jmpi;
@@ -3651,6 +3650,7 @@ module PB1Qsys_nios2_qsys_0 (
   wire             F_op_rsvx56;
   wire             F_op_rsvx60;
   wire             F_op_rsvx63;
+  wire             F_op_shortlcd_0;
   wire             F_op_sll;
   wire             F_op_slli;
   wire             F_op_sra;
@@ -3672,17 +3672,17 @@ module PB1Qsys_nios2_qsys_0 (
   wire             F_op_xor;
   wire             F_op_xorhi;
   wire             F_op_xori;
-  reg     [ 11: 0] F_pc /* synthesis ALTERA_IP_DEBUG_VISIBLE = 1 */;
+  reg     [ 10: 0] F_pc /* synthesis ALTERA_IP_DEBUG_VISIBLE = 1 */;
   wire             F_pc_en;
-  wire    [ 11: 0] F_pc_no_crst_nxt;
-  wire    [ 11: 0] F_pc_nxt;
-  wire    [ 11: 0] F_pc_plus_one;
+  wire    [ 10: 0] F_pc_no_crst_nxt;
+  wire    [ 10: 0] F_pc_nxt;
+  wire    [ 10: 0] F_pc_plus_one;
   wire    [  1: 0] F_pc_sel_nxt;
-  wire    [ 13: 0] F_pcb;
-  wire    [ 13: 0] F_pcb_nxt;
-  wire    [ 13: 0] F_pcb_plus_four;
+  wire    [ 12: 0] F_pcb;
+  wire    [ 12: 0] F_pcb_nxt;
+  wire    [ 12: 0] F_pcb_plus_four;
   wire             F_valid;
-  wire    [127: 0] F_vinst;
+  wire    [ 79: 0] F_vinst;
   reg     [  1: 0] R_compare_op;
   reg              R_ctrl_alu_force_xor;
   wire             R_ctrl_alu_force_xor_nxt;
@@ -3769,7 +3769,7 @@ module PB1Qsys_nios2_qsys_0 (
   wire    [  7: 0] R_stb_data;
   wire    [ 15: 0] R_sth_data;
   reg              R_valid;
-  wire    [127: 0] R_vinst;
+  wire    [ 79: 0] R_vinst;
   reg              R_wr_dst_reg;
   reg     [ 31: 0] W_alu_result;
   wire             W_br_taken;
@@ -3789,7 +3789,7 @@ module PB1Qsys_nios2_qsys_0 (
   wire    [ 31: 0] W_ienable_reg_nxt;
   reg     [ 31: 0] W_ipending_reg;
   wire    [ 31: 0] W_ipending_reg_nxt;
-  wire    [ 13: 0] W_mem_baddr;
+  wire    [ 12: 0] W_mem_baddr;
   wire    [ 31: 0] W_rf_wr_data;
   wire             W_rf_wren;
   wire             W_status_reg;
@@ -3797,7 +3797,7 @@ module PB1Qsys_nios2_qsys_0 (
   wire             W_status_reg_pie_inst_nxt;
   wire             W_status_reg_pie_nxt;
   reg              W_valid /* synthesis ALTERA_IP_DEBUG_VISIBLE = 1 */;
-  wire    [127: 0] W_vinst;
+  wire    [ 79: 0] W_vinst;
   wire    [ 31: 0] W_wr_data;
   wire    [ 31: 0] W_wr_data_non_zero;
   wire             av_fill_bit;
@@ -3824,7 +3824,7 @@ module PB1Qsys_nios2_qsys_0 (
   reg              av_ld_waiting_for_data;
   wire             av_ld_waiting_for_data_nxt;
   wire             av_sign_bit;
-  wire    [ 13: 0] d_address;
+  wire    [ 12: 0] d_address;
   reg     [  3: 0] d_byteenable;
   reg              d_read;
   wire             d_read_nxt;
@@ -3835,7 +3835,7 @@ module PB1Qsys_nios2_qsys_0 (
   reg              hbreak_pending;
   wire             hbreak_pending_nxt;
   wire             hbreak_req;
-  wire    [ 13: 0] i_address;
+  wire    [ 12: 0] i_address;
   reg              i_read;
   wire             i_read_nxt;
   wire    [ 31: 0] iactive;
@@ -4068,7 +4068,7 @@ module PB1Qsys_nios2_qsys_0 (
   assign F_op_rsvx56 = F_op_opx & (F_iw_opx == 56);
   assign F_op_rsvx60 = F_op_opx & (F_iw_opx == 60);
   assign F_op_rsvx63 = F_op_opx & (F_iw_opx == 63);
-  assign F_op_initialize_lcd_0 = F_op_custom & 1'b1;
+  assign F_op_shortlcd_0 = F_op_custom & 1'b1;
   assign F_op_opx = F_iw_op == 58;
   assign F_op_custom = F_iw_op == 50;
   assign D_op_call = D_iw_op == 0;
@@ -4197,7 +4197,7 @@ module PB1Qsys_nios2_qsys_0 (
   assign D_op_rsvx56 = D_op_opx & (D_iw_opx == 56);
   assign D_op_rsvx60 = D_op_opx & (D_iw_opx == 60);
   assign D_op_rsvx63 = D_op_opx & (D_iw_opx == 63);
-  assign D_op_initialize_lcd_0 = D_op_custom & 1'b1;
+  assign D_op_shortlcd_0 = D_op_custom & 1'b1;
   assign D_op_opx = D_iw_op == 58;
   assign D_op_custom = D_iw_op == 50;
   assign R_en = 1'b1;
@@ -4224,8 +4224,8 @@ module PB1Qsys_nios2_qsys_0 (
     2'b11;
 
   assign F_pc_no_crst_nxt = (F_pc_sel_nxt == 2'b00)? 8 :
-    (F_pc_sel_nxt == 2'b01)? 1544 :
-    (F_pc_sel_nxt == 2'b10)? E_arith_result[13 : 2] :
+    (F_pc_sel_nxt == 2'b01)? 1032 :
+    (F_pc_sel_nxt == 2'b10)? E_arith_result[12 : 2] :
     F_pc_plus_one;
 
   assign F_pc_nxt = F_pc_no_crst_nxt;
@@ -4517,7 +4517,7 @@ defparam PB1Qsys_nios2_qsys_0_register_bank_b.lpm_file = "PB1Qsys_nios2_qsys_0_r
     E_arith_src1 - E_arith_src2 :
     E_arith_src1 + E_arith_src2;
 
-  assign E_mem_baddr = E_arith_result[13 : 0];
+  assign E_mem_baddr = E_arith_result[12 : 0];
   assign E_logic_result = (R_logic_op == 2'b00)? (~(E_src1 | E_src2)) :
     (R_logic_op == 2'b01)? (E_src1 & E_src2) :
     (R_logic_op == 2'b10)? (E_src1 | E_src2) :
@@ -4810,7 +4810,7 @@ defparam PB1Qsys_nios2_qsys_0_register_bank_b.lpm_file = "PB1Qsys_nios2_qsys_0_r
 
   assign W_wr_data = W_wr_data_non_zero;
   assign W_br_taken = R_ctrl_br & W_cmp_result;
-  assign W_mem_baddr = W_alu_result[13 : 0];
+  assign W_mem_baddr = W_alu_result[12 : 0];
   assign W_status_reg = W_status_reg_pie;
   assign E_wrctl_status = R_ctrl_wrctl_inst & 
     (D_iw_control_regnum == 3'd0);
@@ -4900,7 +4900,7 @@ defparam PB1Qsys_nios2_qsys_0_register_bank_b.lpm_file = "PB1Qsys_nios2_qsys_0_r
   //jtag_debug_module, which is an e_avalon_slave
   assign jtag_debug_module_clk = clk;
   assign jtag_debug_module_reset = ~reset_n;
-  assign D_ctrl_custom = D_op_initialize_lcd_0;
+  assign D_ctrl_custom = D_op_shortlcd_0;
   assign R_ctrl_custom_nxt = D_ctrl_custom;
   always @(posedge clk or negedge reset_n)
     begin
@@ -4911,7 +4911,7 @@ defparam PB1Qsys_nios2_qsys_0_register_bank_b.lpm_file = "PB1Qsys_nios2_qsys_0_r
     end
 
 
-  assign D_ctrl_custom_multi = D_op_initialize_lcd_0;
+  assign D_ctrl_custom_multi = D_op_shortlcd_0;
   assign R_ctrl_custom_multi_nxt = D_ctrl_custom_multi;
   always @(posedge clk or negedge reset_n)
     begin
@@ -5622,189 +5622,189 @@ defparam PB1Qsys_nios2_qsys_0_register_bank_b.lpm_file = "PB1Qsys_nios2_qsys_0_r
 
 //synthesis translate_off
 //////////////// SIMULATION-ONLY CONTENTS
-  assign F_inst = (F_op_call)? 128'h20202020202020202020202063616c6c :
-    (F_op_jmpi)? 128'h2020202020202020202020206a6d7069 :
-    (F_op_ldbu)? 128'h2020202020202020202020206c646275 :
-    (F_op_addi)? 128'h20202020202020202020202061646469 :
-    (F_op_stb)? 128'h20202020202020202020202020737462 :
-    (F_op_br)? 128'h20202020202020202020202020206272 :
-    (F_op_ldb)? 128'h202020202020202020202020206c6462 :
-    (F_op_cmpgei)? 128'h20202020202020202020636d70676569 :
-    (F_op_ldhu)? 128'h2020202020202020202020206c646875 :
-    (F_op_andi)? 128'h202020202020202020202020616e6469 :
-    (F_op_sth)? 128'h20202020202020202020202020737468 :
-    (F_op_bge)? 128'h20202020202020202020202020626765 :
-    (F_op_ldh)? 128'h202020202020202020202020206c6468 :
-    (F_op_cmplti)? 128'h20202020202020202020636d706c7469 :
-    (F_op_initda)? 128'h20202020202020202020696e69746461 :
-    (F_op_ori)? 128'h202020202020202020202020206f7269 :
-    (F_op_stw)? 128'h20202020202020202020202020737477 :
-    (F_op_blt)? 128'h20202020202020202020202020626c74 :
-    (F_op_ldw)? 128'h202020202020202020202020206c6477 :
-    (F_op_cmpnei)? 128'h20202020202020202020636d706e6569 :
-    (F_op_flushda)? 128'h202020202020202020666c7573686461 :
-    (F_op_xori)? 128'h202020202020202020202020786f7269 :
-    (F_op_bne)? 128'h20202020202020202020202020626e65 :
-    (F_op_cmpeqi)? 128'h20202020202020202020636d70657169 :
-    (F_op_ldbuio)? 128'h202020202020202020206c646275696f :
-    (F_op_muli)? 128'h2020202020202020202020206d756c69 :
-    (F_op_stbio)? 128'h2020202020202020202020737462696f :
-    (F_op_beq)? 128'h20202020202020202020202020626571 :
-    (F_op_ldbio)? 128'h20202020202020202020206c6462696f :
-    (F_op_cmpgeui)? 128'h202020202020202020636d7067657569 :
-    (F_op_ldhuio)? 128'h202020202020202020206c646875696f :
-    (F_op_andhi)? 128'h2020202020202020202020616e646869 :
-    (F_op_sthio)? 128'h2020202020202020202020737468696f :
-    (F_op_bgeu)? 128'h20202020202020202020202062676575 :
-    (F_op_ldhio)? 128'h20202020202020202020206c6468696f :
-    (F_op_cmpltui)? 128'h202020202020202020636d706c747569 :
-    (F_op_initd)? 128'h2020202020202020202020696e697464 :
-    (F_op_orhi)? 128'h2020202020202020202020206f726869 :
-    (F_op_stwio)? 128'h2020202020202020202020737477696f :
-    (F_op_bltu)? 128'h202020202020202020202020626c7475 :
-    (F_op_ldwio)? 128'h20202020202020202020206c6477696f :
-    (F_op_flushd)? 128'h20202020202020202020666c75736864 :
-    (F_op_xorhi)? 128'h2020202020202020202020786f726869 :
-    (F_op_eret)? 128'h20202020202020202020202065726574 :
-    (F_op_roli)? 128'h202020202020202020202020726f6c69 :
-    (F_op_rol)? 128'h20202020202020202020202020726f6c :
-    (F_op_flushp)? 128'h20202020202020202020666c75736870 :
-    (F_op_ret)? 128'h20202020202020202020202020726574 :
-    (F_op_nor)? 128'h202020202020202020202020206e6f72 :
-    (F_op_mulxuu)? 128'h202020202020202020206d756c787575 :
-    (F_op_cmpge)? 128'h2020202020202020202020636d706765 :
-    (F_op_bret)? 128'h20202020202020202020202062726574 :
-    (F_op_ror)? 128'h20202020202020202020202020726f72 :
-    (F_op_flushi)? 128'h20202020202020202020666c75736869 :
-    (F_op_jmp)? 128'h202020202020202020202020206a6d70 :
-    (F_op_and)? 128'h20202020202020202020202020616e64 :
-    (F_op_cmplt)? 128'h2020202020202020202020636d706c74 :
-    (F_op_slli)? 128'h202020202020202020202020736c6c69 :
-    (F_op_sll)? 128'h20202020202020202020202020736c6c :
-    (F_op_or)? 128'h20202020202020202020202020206f72 :
-    (F_op_mulxsu)? 128'h202020202020202020206d756c787375 :
-    (F_op_cmpne)? 128'h2020202020202020202020636d706e65 :
-    (F_op_srli)? 128'h20202020202020202020202073726c69 :
-    (F_op_srl)? 128'h2020202020202020202020202073726c :
-    (F_op_nextpc)? 128'h202020202020202020206e6578747063 :
-    (F_op_callr)? 128'h202020202020202020202063616c6c72 :
-    (F_op_xor)? 128'h20202020202020202020202020786f72 :
-    (F_op_mulxss)? 128'h202020202020202020206d756c787373 :
-    (F_op_cmpeq)? 128'h2020202020202020202020636d706571 :
-    (F_op_divu)? 128'h20202020202020202020202064697675 :
-    (F_op_div)? 128'h20202020202020202020202020646976 :
-    (F_op_rdctl)? 128'h2020202020202020202020726463746c :
-    (F_op_mul)? 128'h202020202020202020202020206d756c :
-    (F_op_cmpgeu)? 128'h20202020202020202020636d70676575 :
-    (F_op_initi)? 128'h2020202020202020202020696e697469 :
-    (F_op_trap)? 128'h20202020202020202020202074726170 :
-    (F_op_wrctl)? 128'h2020202020202020202020777263746c :
-    (F_op_cmpltu)? 128'h20202020202020202020636d706c7475 :
-    (F_op_add)? 128'h20202020202020202020202020616464 :
-    (F_op_break)? 128'h2020202020202020202020627265616b :
-    (F_op_hbreak)? 128'h2020202020202020202068627265616b :
-    (F_op_sync)? 128'h20202020202020202020202073796e63 :
-    (F_op_sub)? 128'h20202020202020202020202020737562 :
-    (F_op_srai)? 128'h20202020202020202020202073726169 :
-    (F_op_sra)? 128'h20202020202020202020202020737261 :
-    (F_op_intr)? 128'h202020202020202020202020696e7472 :
-    (F_op_initialize_lcd_0)? 128'h696e697469616c697a655f6c63645f30 :
-    128'h20202020202020202020202020424144;
+  assign F_inst = (F_op_call)? 80'h20202020202063616c6c :
+    (F_op_jmpi)? 80'h2020202020206a6d7069 :
+    (F_op_ldbu)? 80'h2020202020206c646275 :
+    (F_op_addi)? 80'h20202020202061646469 :
+    (F_op_stb)? 80'h20202020202020737462 :
+    (F_op_br)? 80'h20202020202020206272 :
+    (F_op_ldb)? 80'h202020202020206c6462 :
+    (F_op_cmpgei)? 80'h20202020636d70676569 :
+    (F_op_ldhu)? 80'h2020202020206c646875 :
+    (F_op_andi)? 80'h202020202020616e6469 :
+    (F_op_sth)? 80'h20202020202020737468 :
+    (F_op_bge)? 80'h20202020202020626765 :
+    (F_op_ldh)? 80'h202020202020206c6468 :
+    (F_op_cmplti)? 80'h20202020636d706c7469 :
+    (F_op_initda)? 80'h20202020696e69746461 :
+    (F_op_ori)? 80'h202020202020206f7269 :
+    (F_op_stw)? 80'h20202020202020737477 :
+    (F_op_blt)? 80'h20202020202020626c74 :
+    (F_op_ldw)? 80'h202020202020206c6477 :
+    (F_op_cmpnei)? 80'h20202020636d706e6569 :
+    (F_op_flushda)? 80'h202020666c7573686461 :
+    (F_op_xori)? 80'h202020202020786f7269 :
+    (F_op_bne)? 80'h20202020202020626e65 :
+    (F_op_cmpeqi)? 80'h20202020636d70657169 :
+    (F_op_ldbuio)? 80'h202020206c646275696f :
+    (F_op_muli)? 80'h2020202020206d756c69 :
+    (F_op_stbio)? 80'h2020202020737462696f :
+    (F_op_beq)? 80'h20202020202020626571 :
+    (F_op_ldbio)? 80'h20202020206c6462696f :
+    (F_op_cmpgeui)? 80'h202020636d7067657569 :
+    (F_op_ldhuio)? 80'h202020206c646875696f :
+    (F_op_andhi)? 80'h2020202020616e646869 :
+    (F_op_sthio)? 80'h2020202020737468696f :
+    (F_op_bgeu)? 80'h20202020202062676575 :
+    (F_op_ldhio)? 80'h20202020206c6468696f :
+    (F_op_cmpltui)? 80'h202020636d706c747569 :
+    (F_op_initd)? 80'h2020202020696e697464 :
+    (F_op_orhi)? 80'h2020202020206f726869 :
+    (F_op_stwio)? 80'h2020202020737477696f :
+    (F_op_bltu)? 80'h202020202020626c7475 :
+    (F_op_ldwio)? 80'h20202020206c6477696f :
+    (F_op_flushd)? 80'h20202020666c75736864 :
+    (F_op_xorhi)? 80'h2020202020786f726869 :
+    (F_op_eret)? 80'h20202020202065726574 :
+    (F_op_roli)? 80'h202020202020726f6c69 :
+    (F_op_rol)? 80'h20202020202020726f6c :
+    (F_op_flushp)? 80'h20202020666c75736870 :
+    (F_op_ret)? 80'h20202020202020726574 :
+    (F_op_nor)? 80'h202020202020206e6f72 :
+    (F_op_mulxuu)? 80'h202020206d756c787575 :
+    (F_op_cmpge)? 80'h2020202020636d706765 :
+    (F_op_bret)? 80'h20202020202062726574 :
+    (F_op_ror)? 80'h20202020202020726f72 :
+    (F_op_flushi)? 80'h20202020666c75736869 :
+    (F_op_jmp)? 80'h202020202020206a6d70 :
+    (F_op_and)? 80'h20202020202020616e64 :
+    (F_op_cmplt)? 80'h2020202020636d706c74 :
+    (F_op_slli)? 80'h202020202020736c6c69 :
+    (F_op_sll)? 80'h20202020202020736c6c :
+    (F_op_or)? 80'h20202020202020206f72 :
+    (F_op_mulxsu)? 80'h202020206d756c787375 :
+    (F_op_cmpne)? 80'h2020202020636d706e65 :
+    (F_op_srli)? 80'h20202020202073726c69 :
+    (F_op_srl)? 80'h2020202020202073726c :
+    (F_op_nextpc)? 80'h202020206e6578747063 :
+    (F_op_callr)? 80'h202020202063616c6c72 :
+    (F_op_xor)? 80'h20202020202020786f72 :
+    (F_op_mulxss)? 80'h202020206d756c787373 :
+    (F_op_cmpeq)? 80'h2020202020636d706571 :
+    (F_op_divu)? 80'h20202020202064697675 :
+    (F_op_div)? 80'h20202020202020646976 :
+    (F_op_rdctl)? 80'h2020202020726463746c :
+    (F_op_mul)? 80'h202020202020206d756c :
+    (F_op_cmpgeu)? 80'h20202020636d70676575 :
+    (F_op_initi)? 80'h2020202020696e697469 :
+    (F_op_trap)? 80'h20202020202074726170 :
+    (F_op_wrctl)? 80'h2020202020777263746c :
+    (F_op_cmpltu)? 80'h20202020636d706c7475 :
+    (F_op_add)? 80'h20202020202020616464 :
+    (F_op_break)? 80'h2020202020627265616b :
+    (F_op_hbreak)? 80'h2020202068627265616b :
+    (F_op_sync)? 80'h20202020202073796e63 :
+    (F_op_sub)? 80'h20202020202020737562 :
+    (F_op_srai)? 80'h20202020202073726169 :
+    (F_op_sra)? 80'h20202020202020737261 :
+    (F_op_intr)? 80'h202020202020696e7472 :
+    (F_op_shortlcd_0)? 80'h73686f72746c63645f30 :
+    80'h20202020202020424144;
 
-  assign D_inst = (D_op_call)? 128'h20202020202020202020202063616c6c :
-    (D_op_jmpi)? 128'h2020202020202020202020206a6d7069 :
-    (D_op_ldbu)? 128'h2020202020202020202020206c646275 :
-    (D_op_addi)? 128'h20202020202020202020202061646469 :
-    (D_op_stb)? 128'h20202020202020202020202020737462 :
-    (D_op_br)? 128'h20202020202020202020202020206272 :
-    (D_op_ldb)? 128'h202020202020202020202020206c6462 :
-    (D_op_cmpgei)? 128'h20202020202020202020636d70676569 :
-    (D_op_ldhu)? 128'h2020202020202020202020206c646875 :
-    (D_op_andi)? 128'h202020202020202020202020616e6469 :
-    (D_op_sth)? 128'h20202020202020202020202020737468 :
-    (D_op_bge)? 128'h20202020202020202020202020626765 :
-    (D_op_ldh)? 128'h202020202020202020202020206c6468 :
-    (D_op_cmplti)? 128'h20202020202020202020636d706c7469 :
-    (D_op_initda)? 128'h20202020202020202020696e69746461 :
-    (D_op_ori)? 128'h202020202020202020202020206f7269 :
-    (D_op_stw)? 128'h20202020202020202020202020737477 :
-    (D_op_blt)? 128'h20202020202020202020202020626c74 :
-    (D_op_ldw)? 128'h202020202020202020202020206c6477 :
-    (D_op_cmpnei)? 128'h20202020202020202020636d706e6569 :
-    (D_op_flushda)? 128'h202020202020202020666c7573686461 :
-    (D_op_xori)? 128'h202020202020202020202020786f7269 :
-    (D_op_bne)? 128'h20202020202020202020202020626e65 :
-    (D_op_cmpeqi)? 128'h20202020202020202020636d70657169 :
-    (D_op_ldbuio)? 128'h202020202020202020206c646275696f :
-    (D_op_muli)? 128'h2020202020202020202020206d756c69 :
-    (D_op_stbio)? 128'h2020202020202020202020737462696f :
-    (D_op_beq)? 128'h20202020202020202020202020626571 :
-    (D_op_ldbio)? 128'h20202020202020202020206c6462696f :
-    (D_op_cmpgeui)? 128'h202020202020202020636d7067657569 :
-    (D_op_ldhuio)? 128'h202020202020202020206c646875696f :
-    (D_op_andhi)? 128'h2020202020202020202020616e646869 :
-    (D_op_sthio)? 128'h2020202020202020202020737468696f :
-    (D_op_bgeu)? 128'h20202020202020202020202062676575 :
-    (D_op_ldhio)? 128'h20202020202020202020206c6468696f :
-    (D_op_cmpltui)? 128'h202020202020202020636d706c747569 :
-    (D_op_initd)? 128'h2020202020202020202020696e697464 :
-    (D_op_orhi)? 128'h2020202020202020202020206f726869 :
-    (D_op_stwio)? 128'h2020202020202020202020737477696f :
-    (D_op_bltu)? 128'h202020202020202020202020626c7475 :
-    (D_op_ldwio)? 128'h20202020202020202020206c6477696f :
-    (D_op_flushd)? 128'h20202020202020202020666c75736864 :
-    (D_op_xorhi)? 128'h2020202020202020202020786f726869 :
-    (D_op_eret)? 128'h20202020202020202020202065726574 :
-    (D_op_roli)? 128'h202020202020202020202020726f6c69 :
-    (D_op_rol)? 128'h20202020202020202020202020726f6c :
-    (D_op_flushp)? 128'h20202020202020202020666c75736870 :
-    (D_op_ret)? 128'h20202020202020202020202020726574 :
-    (D_op_nor)? 128'h202020202020202020202020206e6f72 :
-    (D_op_mulxuu)? 128'h202020202020202020206d756c787575 :
-    (D_op_cmpge)? 128'h2020202020202020202020636d706765 :
-    (D_op_bret)? 128'h20202020202020202020202062726574 :
-    (D_op_ror)? 128'h20202020202020202020202020726f72 :
-    (D_op_flushi)? 128'h20202020202020202020666c75736869 :
-    (D_op_jmp)? 128'h202020202020202020202020206a6d70 :
-    (D_op_and)? 128'h20202020202020202020202020616e64 :
-    (D_op_cmplt)? 128'h2020202020202020202020636d706c74 :
-    (D_op_slli)? 128'h202020202020202020202020736c6c69 :
-    (D_op_sll)? 128'h20202020202020202020202020736c6c :
-    (D_op_or)? 128'h20202020202020202020202020206f72 :
-    (D_op_mulxsu)? 128'h202020202020202020206d756c787375 :
-    (D_op_cmpne)? 128'h2020202020202020202020636d706e65 :
-    (D_op_srli)? 128'h20202020202020202020202073726c69 :
-    (D_op_srl)? 128'h2020202020202020202020202073726c :
-    (D_op_nextpc)? 128'h202020202020202020206e6578747063 :
-    (D_op_callr)? 128'h202020202020202020202063616c6c72 :
-    (D_op_xor)? 128'h20202020202020202020202020786f72 :
-    (D_op_mulxss)? 128'h202020202020202020206d756c787373 :
-    (D_op_cmpeq)? 128'h2020202020202020202020636d706571 :
-    (D_op_divu)? 128'h20202020202020202020202064697675 :
-    (D_op_div)? 128'h20202020202020202020202020646976 :
-    (D_op_rdctl)? 128'h2020202020202020202020726463746c :
-    (D_op_mul)? 128'h202020202020202020202020206d756c :
-    (D_op_cmpgeu)? 128'h20202020202020202020636d70676575 :
-    (D_op_initi)? 128'h2020202020202020202020696e697469 :
-    (D_op_trap)? 128'h20202020202020202020202074726170 :
-    (D_op_wrctl)? 128'h2020202020202020202020777263746c :
-    (D_op_cmpltu)? 128'h20202020202020202020636d706c7475 :
-    (D_op_add)? 128'h20202020202020202020202020616464 :
-    (D_op_break)? 128'h2020202020202020202020627265616b :
-    (D_op_hbreak)? 128'h2020202020202020202068627265616b :
-    (D_op_sync)? 128'h20202020202020202020202073796e63 :
-    (D_op_sub)? 128'h20202020202020202020202020737562 :
-    (D_op_srai)? 128'h20202020202020202020202073726169 :
-    (D_op_sra)? 128'h20202020202020202020202020737261 :
-    (D_op_intr)? 128'h202020202020202020202020696e7472 :
-    (D_op_initialize_lcd_0)? 128'h696e697469616c697a655f6c63645f30 :
-    128'h20202020202020202020202020424144;
+  assign D_inst = (D_op_call)? 80'h20202020202063616c6c :
+    (D_op_jmpi)? 80'h2020202020206a6d7069 :
+    (D_op_ldbu)? 80'h2020202020206c646275 :
+    (D_op_addi)? 80'h20202020202061646469 :
+    (D_op_stb)? 80'h20202020202020737462 :
+    (D_op_br)? 80'h20202020202020206272 :
+    (D_op_ldb)? 80'h202020202020206c6462 :
+    (D_op_cmpgei)? 80'h20202020636d70676569 :
+    (D_op_ldhu)? 80'h2020202020206c646875 :
+    (D_op_andi)? 80'h202020202020616e6469 :
+    (D_op_sth)? 80'h20202020202020737468 :
+    (D_op_bge)? 80'h20202020202020626765 :
+    (D_op_ldh)? 80'h202020202020206c6468 :
+    (D_op_cmplti)? 80'h20202020636d706c7469 :
+    (D_op_initda)? 80'h20202020696e69746461 :
+    (D_op_ori)? 80'h202020202020206f7269 :
+    (D_op_stw)? 80'h20202020202020737477 :
+    (D_op_blt)? 80'h20202020202020626c74 :
+    (D_op_ldw)? 80'h202020202020206c6477 :
+    (D_op_cmpnei)? 80'h20202020636d706e6569 :
+    (D_op_flushda)? 80'h202020666c7573686461 :
+    (D_op_xori)? 80'h202020202020786f7269 :
+    (D_op_bne)? 80'h20202020202020626e65 :
+    (D_op_cmpeqi)? 80'h20202020636d70657169 :
+    (D_op_ldbuio)? 80'h202020206c646275696f :
+    (D_op_muli)? 80'h2020202020206d756c69 :
+    (D_op_stbio)? 80'h2020202020737462696f :
+    (D_op_beq)? 80'h20202020202020626571 :
+    (D_op_ldbio)? 80'h20202020206c6462696f :
+    (D_op_cmpgeui)? 80'h202020636d7067657569 :
+    (D_op_ldhuio)? 80'h202020206c646875696f :
+    (D_op_andhi)? 80'h2020202020616e646869 :
+    (D_op_sthio)? 80'h2020202020737468696f :
+    (D_op_bgeu)? 80'h20202020202062676575 :
+    (D_op_ldhio)? 80'h20202020206c6468696f :
+    (D_op_cmpltui)? 80'h202020636d706c747569 :
+    (D_op_initd)? 80'h2020202020696e697464 :
+    (D_op_orhi)? 80'h2020202020206f726869 :
+    (D_op_stwio)? 80'h2020202020737477696f :
+    (D_op_bltu)? 80'h202020202020626c7475 :
+    (D_op_ldwio)? 80'h20202020206c6477696f :
+    (D_op_flushd)? 80'h20202020666c75736864 :
+    (D_op_xorhi)? 80'h2020202020786f726869 :
+    (D_op_eret)? 80'h20202020202065726574 :
+    (D_op_roli)? 80'h202020202020726f6c69 :
+    (D_op_rol)? 80'h20202020202020726f6c :
+    (D_op_flushp)? 80'h20202020666c75736870 :
+    (D_op_ret)? 80'h20202020202020726574 :
+    (D_op_nor)? 80'h202020202020206e6f72 :
+    (D_op_mulxuu)? 80'h202020206d756c787575 :
+    (D_op_cmpge)? 80'h2020202020636d706765 :
+    (D_op_bret)? 80'h20202020202062726574 :
+    (D_op_ror)? 80'h20202020202020726f72 :
+    (D_op_flushi)? 80'h20202020666c75736869 :
+    (D_op_jmp)? 80'h202020202020206a6d70 :
+    (D_op_and)? 80'h20202020202020616e64 :
+    (D_op_cmplt)? 80'h2020202020636d706c74 :
+    (D_op_slli)? 80'h202020202020736c6c69 :
+    (D_op_sll)? 80'h20202020202020736c6c :
+    (D_op_or)? 80'h20202020202020206f72 :
+    (D_op_mulxsu)? 80'h202020206d756c787375 :
+    (D_op_cmpne)? 80'h2020202020636d706e65 :
+    (D_op_srli)? 80'h20202020202073726c69 :
+    (D_op_srl)? 80'h2020202020202073726c :
+    (D_op_nextpc)? 80'h202020206e6578747063 :
+    (D_op_callr)? 80'h202020202063616c6c72 :
+    (D_op_xor)? 80'h20202020202020786f72 :
+    (D_op_mulxss)? 80'h202020206d756c787373 :
+    (D_op_cmpeq)? 80'h2020202020636d706571 :
+    (D_op_divu)? 80'h20202020202064697675 :
+    (D_op_div)? 80'h20202020202020646976 :
+    (D_op_rdctl)? 80'h2020202020726463746c :
+    (D_op_mul)? 80'h202020202020206d756c :
+    (D_op_cmpgeu)? 80'h20202020636d70676575 :
+    (D_op_initi)? 80'h2020202020696e697469 :
+    (D_op_trap)? 80'h20202020202074726170 :
+    (D_op_wrctl)? 80'h2020202020777263746c :
+    (D_op_cmpltu)? 80'h20202020636d706c7475 :
+    (D_op_add)? 80'h20202020202020616464 :
+    (D_op_break)? 80'h2020202020627265616b :
+    (D_op_hbreak)? 80'h2020202068627265616b :
+    (D_op_sync)? 80'h20202020202073796e63 :
+    (D_op_sub)? 80'h20202020202020737562 :
+    (D_op_srai)? 80'h20202020202073726169 :
+    (D_op_sra)? 80'h20202020202020737261 :
+    (D_op_intr)? 80'h202020202020696e7472 :
+    (D_op_shortlcd_0)? 80'h73686f72746c63645f30 :
+    80'h20202020202020424144;
 
-  assign F_vinst = F_valid ? F_inst : {16{8'h2d}};
-  assign D_vinst = D_valid ? D_inst : {16{8'h2d}};
-  assign R_vinst = R_valid ? D_inst : {16{8'h2d}};
-  assign E_vinst = E_valid ? D_inst : {16{8'h2d}};
-  assign W_vinst = W_valid ? D_inst : {16{8'h2d}};
+  assign F_vinst = F_valid ? F_inst : {10{8'h2d}};
+  assign D_vinst = D_valid ? D_inst : {10{8'h2d}};
+  assign R_vinst = R_valid ? D_inst : {10{8'h2d}};
+  assign E_vinst = E_valid ? D_inst : {10{8'h2d}};
+  assign W_vinst = W_valid ? D_inst : {10{8'h2d}};
 
 //////////////// END SIMULATION-ONLY CONTENTS
 

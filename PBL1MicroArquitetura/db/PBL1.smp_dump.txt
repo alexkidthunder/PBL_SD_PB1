@@ -1,15 +1,4 @@
 
-State Machine - |PB1Qsys|initialize_lcd:initialize_lcd_0|state
-Name state.111 state.110 state.101 state.100 state.011 state.010 state.001 state.000 
-state.000 0 0 0 0 0 0 0 0 
-state.001 0 0 0 0 0 0 1 1 
-state.010 0 0 0 0 0 1 0 1 
-state.011 0 0 0 0 1 0 0 1 
-state.100 0 0 0 1 0 0 0 1 
-state.101 0 0 1 0 0 0 0 1 
-state.110 0 1 0 0 0 0 0 1 
-state.111 1 0 0 0 0 0 0 1 
-
 State Machine - |PB1Qsys|PB1Qsys_nios2_qsys_0:nios2_qsys_0|PB1Qsys_nios2_qsys_0_nios2_oci:the_PB1Qsys_nios2_qsys_0_nios2_oci|PB1Qsys_nios2_qsys_0_jtag_debug_module_wrapper:the_PB1Qsys_nios2_qsys_0_jtag_debug_module_wrapper|PB1Qsys_nios2_qsys_0_jtag_debug_module_tck:the_PB1Qsys_nios2_qsys_0_jtag_debug_module_tck|DRsize
 Name DRsize.101 DRsize.100 DRsize.011 DRsize.010 DRsize.001 DRsize.000 
 DRsize.000 0 0 0 0 0 0 
