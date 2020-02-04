@@ -24,7 +24,7 @@
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "5";
          type = "int";
       }
    }
@@ -68,14 +68,6 @@
          type = "int";
       }
    }
-   element leds
-   {
-      datum _sortIndex
-      {
-         value = "5";
-         type = "int";
-      }
-   }
    element nios2_qsys_0
    {
       datum _sortIndex
@@ -92,11 +84,11 @@
          type = "int";
       }
    }
-   element leds.s1
+   element Buttons.s1
    {
       datum baseAddress
       {
-         value = "6176";
+         value = "6192";
          type = "String";
       }
    }
@@ -110,14 +102,6 @@
       datum baseAddress
       {
          value = "0";
-         type = "String";
-      }
-   }
-   element Buttons.s1
-   {
-      datum baseAddress
-      {
-         value = "6192";
          type = "String";
       }
    }
@@ -144,11 +128,6 @@
  <interface
    name="buttons"
    internal="Buttons.external_connection"
-   type="conduit"
-   dir="end" />
- <interface
-   name="leds"
-   internal="leds.external_connection"
    type="conduit"
    dir="end" />
  <interface name="lcd" internal="Shortlcd_0.conduit_end" type="conduit" dir="end" />
@@ -272,8 +251,8 @@
   <parameter name="tightlyCoupledInstructionMaster1AddrWidth" value="1" />
   <parameter name="tightlyCoupledInstructionMaster2AddrWidth" value="1" />
   <parameter name="tightlyCoupledInstructionMaster3AddrWidth" value="1" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1000' end='0x1800' /><slave name='leds.s1' start='0x1820' end='0x1830' /><slave name='Buttons.s1' start='0x1830' end='0x1840' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x1848' end='0x1850' /></address-map>]]></parameter>
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='leds.s1' start='0x1820' end='0x1830' /><slave name='Buttons.s1' start='0x1830' end='0x1840' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x1848' end='0x1850' /></address-map>]]></parameter>
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='nios2_qsys_0.jtag_debug_module' start='0x1000' end='0x1800' /><slave name='Buttons.s1' start='0x1830' end='0x1840' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x1848' end='0x1850' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x0' end='0x1000' /><slave name='Buttons.s1' start='0x1830' end='0x1840' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x1848' end='0x1850' /></address-map>]]></parameter>
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="deviceFamilyName" value="Cyclone IV E" />
   <parameter name="internalIrqMaskSystemInfo" value="32" />
@@ -346,20 +325,6 @@
   <parameter name="writeBufferDepth" value="64" />
   <parameter name="writeIRQThreshold" value="8" />
   <parameter name="avalonSpec" value="2.0" />
- </module>
- <module kind="altera_avalon_pio" version="13.1" enabled="1" name="leds">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="8" />
-  <parameter name="clockRate" value="50000000" />
  </module>
  <module kind="Shortlcd" version="1.0" enabled="1" name="Shortlcd_0" />
  <connection
@@ -459,26 +424,6 @@
    start="nios2_qsys_0.d_irq"
    end="jtag_uart_0.irq">
   <parameter name="irqNumber" value="5" />
- </connection>
- <connection kind="clock" version="13.1" start="clk_0.clk" end="leds.clk" />
- <connection kind="reset" version="13.1" start="clk_0.clk_reset" end="leds.reset" />
- <connection
-   kind="avalon"
-   version="13.1"
-   start="nios2_qsys_0.data_master"
-   end="leds.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x1820" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="13.1"
-   start="nios2_qsys_0.instruction_master"
-   end="leds.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x1820" />
-  <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="nios_custom_instruction"

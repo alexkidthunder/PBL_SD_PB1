@@ -48,7 +48,7 @@ always @ (posedge clk or posedge reset) begin
 				case (state)
 					functionSet:begin
 						done <= 1'b0;
-						lcd_enable <= 1'b1;
+						lcd_enable <= 1'b0;
 						lcd_rs <= 1'b0;
 						lcd_data <= 8'b00111000;
 						counter <= 16'd0;

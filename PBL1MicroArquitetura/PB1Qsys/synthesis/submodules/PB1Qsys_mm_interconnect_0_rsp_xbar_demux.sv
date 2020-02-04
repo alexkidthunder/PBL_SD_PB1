@@ -28,8 +28,8 @@
 // ------------------------------------------
 // Generation parameters:
 //   output_name:         PB1Qsys_mm_interconnect_0_rsp_xbar_demux
-//   ST_DATA_W:           89
-//   ST_CHANNEL_W:        5
+//   ST_DATA_W:           87
+//   ST_CHANNEL_W:        4
 //   NUM_OUTPUTS:         1
 //   VALID_WIDTH:         1
 // ------------------------------------------
@@ -46,8 +46,8 @@ module PB1Qsys_mm_interconnect_0_rsp_xbar_demux
     // Sink
     // -------------------
     input  [1-1      : 0]   sink_valid,
-    input  [89-1    : 0]   sink_data, // ST_DATA_W=89
-    input  [5-1 : 0]   sink_channel, // ST_CHANNEL_W=5
+    input  [87-1    : 0]   sink_data, // ST_DATA_W=87
+    input  [4-1 : 0]   sink_channel, // ST_CHANNEL_W=4
     input                         sink_startofpacket,
     input                         sink_endofpacket,
     output                        sink_ready,
@@ -56,8 +56,8 @@ module PB1Qsys_mm_interconnect_0_rsp_xbar_demux
     // Sources 
     // -------------------
     output reg                      src0_valid,
-    output reg [89-1    : 0] src0_data, // ST_DATA_W=89
-    output reg [5-1 : 0] src0_channel, // ST_CHANNEL_W=5
+    output reg [87-1    : 0] src0_data, // ST_DATA_W=87
+    output reg [4-1 : 0] src0_channel, // ST_CHANNEL_W=4
     output reg                      src0_startofpacket,
     output reg                      src0_endofpacket,
     input                           src0_ready,
@@ -94,7 +94,7 @@ module PB1Qsys_mm_interconnect_0_rsp_xbar_demux
     // -------------------
     assign ready_vector[0] = src0_ready;
 
-    assign sink_ready = |(sink_channel & {{4{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
+    assign sink_ready = |(sink_channel & {{3{1'b0}},{ready_vector[NUM_OUTPUTS - 1 : 0]}});
 
 endmodule
 
