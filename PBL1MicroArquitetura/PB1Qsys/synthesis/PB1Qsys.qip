@@ -2,7 +2,7 @@ set_global_assignment -entity "PB1Qsys" -library "PB1Qsys" -name IP_TOOL_NAME "Q
 set_global_assignment -entity "PB1Qsys" -library "PB1Qsys" -name IP_TOOL_VERSION "13.1"
 set_global_assignment -entity "PB1Qsys" -library "PB1Qsys" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "PB1Qsys" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../PB1Qsys.sopcinfo"]
-set_global_assignment -entity "PB1Qsys" -library "PB1Qsys" -name SLD_INFO "QSYS_NAME PB1Qsys HAS_SOPCINFO 1 GENERATION_ID 1580820295"
+set_global_assignment -entity "PB1Qsys" -library "PB1Qsys" -name SLD_INFO "QSYS_NAME PB1Qsys HAS_SOPCINFO 1 GENERATION_ID 1580897380"
 set_global_assignment -library "PB1Qsys" -name MISC_FILE [file join $::quartus(qip_path) "../../PB1Qsys.cmp"]
 set_global_assignment -library "PB1Qsys" -name SLD_FILE [file join $::quartus(qip_path) "PB1Qsys.regmap"]
 set_global_assignment -library "PB1Qsys" -name SLD_FILE [file join $::quartus(qip_path) "PB1Qsys.debuginfo"]
@@ -37,7 +37,7 @@ set_global_assignment -library "PB1Qsys" -name SYSTEMVERILOG_FILE [file join $::
 set_global_assignment -library "PB1Qsys" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_customins_slave_translator.sv"]
 set_global_assignment -library "PB1Qsys" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/PB1Qsys_nios2_qsys_0_custom_instruction_master_multi_xconnect.sv"]
 set_global_assignment -library "PB1Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_customins_master_translator.v"]
-set_global_assignment -library "PB1Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/ShortLCDInit.v"]
+set_global_assignment -library "PB1Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/LCD_Driver.v"]
 set_global_assignment -library "PB1Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/PB1Qsys_jtag_uart_0.v"]
 set_global_assignment -library "PB1Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/PB1Qsys_Buttons.v"]
 set_global_assignment -library "PB1Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/PB1Qsys_onchip_memory2_0.v"]

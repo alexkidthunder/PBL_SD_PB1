@@ -1,5 +1,5 @@
 Assembler report for PBL1
-Tue Feb 04 15:21:59 2020
+Wed Feb 05 09:29:06 2020
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Tue Feb 04 15:21:59 2020 ;
+; Assembler Status      ; Successful - Wed Feb 05 09:29:06 2020 ;
 ; Revision Name         ; PBL1                                  ;
 ; Top-level Entity Name ; PB1Qsys                               ;
 ; Family                ; Cyclone IV E                          ;
@@ -103,8 +103,8 @@ applicable agreement for further details.
 ; Option         ; Setting                                                            ;
 +----------------+--------------------------------------------------------------------+
 ; Device         ; EP4CE6E22C8                                                        ;
-; JTAG usercode  ; 0x001B5040                                                         ;
-; Checksum       ; 0x001B5040                                                         ;
+; JTAG usercode  ; 0x001BC2E2                                                         ;
+; Checksum       ; 0x001BC2E2                                                         ;
 +----------------+--------------------------------------------------------------------+
 
 
@@ -114,13 +114,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Tue Feb 04 15:21:58 2020
+    Info: Processing started: Wed Feb 05 09:29:05 2020
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off PBL1 -c PBL1
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 4588 megabytes
-    Info: Processing ended: Tue Feb 04 15:21:59 2020
+    Info: Processing ended: Wed Feb 05 09:29:06 2020
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

@@ -68,17 +68,17 @@ CHIP  "PBL1"  ASSIGNED TO AN: EP4CE6E22C8
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
-lcd_datadisplay[1]           : 1         : output : 2.5 V             :         : 1         : Y              
-lcd_datadisplay[4]           : 2         : output : 2.5 V             :         : 1         : Y              
-lcd_datadisplay[3]           : 3         : output : 2.5 V             :         : 1         : Y              
+lcd_data_out[1]              : 1         : output : 2.5 V             :         : 1         : Y              
+lcd_data_out[4]              : 2         : output : 2.5 V             :         : 1         : Y              
+lcd_data_out[3]              : 3         : output : 2.5 V             :         : 1         : Y              
 GND                          : 4         : gnd    :                   :         :           :                
 VCCINT                       : 5         : power  :                   : 1.2V    :           :                
 ~ALTERA_ASDO_DATA1~ / RESERVED_INPUT_WITH_WEAK_PULLUP : 6         : input  : 2.5 V             :         : 1         : N              
-lcd_datadisplay[6]           : 7         : output : 2.5 V             :         : 1         : Y              
+lcd_data_out[6]              : 7         : output : 2.5 V             :         : 1         : Y              
 ~ALTERA_FLASH_nCE_nCSO~ / RESERVED_INPUT_WITH_WEAK_PULLUP : 8         : input  : 2.5 V             :         : 1         : N              
 nSTATUS                      : 9         :        :                   :         : 1         :                
-lcd_datadisplay[5]           : 10        : output : 2.5 V             :         : 1         : Y              
-lcd_datadisplay[7]           : 11        : output : 2.5 V             :         : 1         : Y              
+lcd_data_out[5]              : 10        : output : 2.5 V             :         : 1         : Y              
+lcd_data_out[7]              : 11        : output : 2.5 V             :         : 1         : Y              
 ~ALTERA_DCLK~                : 12        : output : 2.5 V             :         : 1         : N              
 ~ALTERA_DATA0~ / RESERVED_INPUT_WITH_WEAK_PULLUP : 13        : input  : 2.5 V             :         : 1         : N              
 nCONFIG                      : 14        :        :                   :         : 1         :                
@@ -209,7 +209,7 @@ lcd_read_write               : 138       : output : 2.5 V             :         
 VCCIO8                       : 139       : power  :                   : 2.5V    : 8         :                
 GND                          : 140       : gnd    :                   :         :           :                
 lcd_register_select          : 141       : output : 2.5 V             :         : 8         : Y              
-lcd_datadisplay[0]           : 142       : output : 2.5 V             :         : 8         : Y              
-lcd_enable                   : 143       : output : 2.5 V             :         : 8         : Y              
-lcd_datadisplay[2]           : 144       : output : 2.5 V             :         : 8         : Y              
+lcd_data_out[0]              : 142       : output : 2.5 V             :         : 8         : Y              
+lcd_enable_op                : 143       : output : 2.5 V             :         : 8         : Y              
+lcd_data_out[2]              : 144       : output : 2.5 V             :         : 8         : Y              
 GND                          : EPAD      :        :                   :         :           :                

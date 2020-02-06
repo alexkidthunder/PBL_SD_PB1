@@ -127,7 +127,7 @@ frase_GameOver:
 	
 	ldbuio r3, 0(r5)
 	
-	beq r3, r14, led2
+	beq r3, r14, funcao
 	
 	callr r8
 	

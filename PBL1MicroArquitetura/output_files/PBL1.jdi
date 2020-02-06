@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="6afaedc1128e5fa7a190"/>
+    <hash md5_digest_80b="77f8f08d16bb66081a69"/>
   </project>
   <file_info>
     <file device="EP4CE6E22C8" path="PBL1.sof" usercode="0xFFFFFFFF"/>
@@ -144,7 +144,7 @@
   <sld_infos>
     <sld_info hpath="" name="">
       <assignment_values>
-        <assignment_value text="QSYS_NAME PB1Qsys HAS_SOPCINFO 1 GENERATION_ID 1580820295"/>
+        <assignment_value text="QSYS_NAME PB1Qsys HAS_SOPCINFO 1 GENERATION_ID 1580897380"/>
       </assignment_values>
       <parameters/>
     </sld_info>

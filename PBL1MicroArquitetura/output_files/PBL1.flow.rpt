@@ -1,5 +1,5 @@
 Flow report for PBL1
-Tue Feb 04 15:22:13 2020
+Wed Feb 05 09:29:18 2020
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -40,17 +40,17 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Tue Feb 04 15:22:13 2020      ;
+; Flow Status                        ; Successful - Wed Feb 05 09:29:18 2020      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; PBL1                                       ;
 ; Top-level Entity Name              ; PB1Qsys                                    ;
 ; Family                             ; Cyclone IV E                               ;
 ; Device                             ; EP4CE6E22C8                                ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 1,540 / 6,272 ( 25 % )                     ;
-;     Total combinational functions  ; 1,432 / 6,272 ( 23 % )                     ;
-;     Dedicated logic registers      ; 865 / 6,272 ( 14 % )                       ;
-; Total registers                    ; 865                                        ;
+; Total logic elements               ; 1,575 / 6,272 ( 25 % )                     ;
+;     Total combinational functions  ; 1,466 / 6,272 ( 23 % )                     ;
+;     Dedicated logic registers      ; 881 / 6,272 ( 14 % )                       ;
+; Total registers                    ; 881                                        ;
 ; Total pins                         ; 16 / 92 ( 17 % )                           ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 44,032 / 276,480 ( 16 % )                  ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/04/2020 15:21:34 ;
+; Start date & time ; 02/05/2020 09:28:38 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; PBL1                ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+-----------------------------------------------------------+---------------+---------------------------------------------------------------+----------------+
 ; Assignment Name                     ; Value                                                     ; Default Value ; Entity Name                                                   ; Section Id     ;
 +-------------------------------------+-----------------------------------------------------------+---------------+---------------------------------------------------------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 268891676886959.158084049415344                           ; --            ; --                                                            ; --             ;
+; COMPILER_SIGNATURE_ID               ; 268891676886959.158090571803240                           ; --            ; --                                                            ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                                      ; --            ; --                                                            ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                                    ; <None>        ; --                                                            ; --             ;
 ; IP_TOOL_ENV                         ; Qsys                                                      ; --            ; PB1Qsys                                                       ; --             ;
@@ -174,7 +174,7 @@ applicable agreement for further details.
 ; PROJECT_OUTPUT_DIRECTORY            ; output_files                                              ; --            ; --                                                            ; --             ;
 ; SLD_FILE                            ; PB1Qsys/synthesis/PB1Qsys.regmap                          ; --            ; --                                                            ; --             ;
 ; SLD_FILE                            ; PB1Qsys/synthesis/PB1Qsys.debuginfo                       ; --            ; --                                                            ; --             ;
-; SLD_INFO                            ; QSYS_NAME PB1Qsys HAS_SOPCINFO 1 GENERATION_ID 1580820295 ; --            ; PB1Qsys                                                       ; --             ;
+; SLD_INFO                            ; QSYS_NAME PB1Qsys HAS_SOPCINFO 1 GENERATION_ID 1580897380 ; --            ; PB1Qsys                                                       ; --             ;
 ; SOPCINFO_FILE                       ; PB1Qsys/synthesis/../../PB1Qsys.sopcinfo                  ; --            ; --                                                            ; --             ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                        ; --            ; --                                                            ; --             ;
 ; TOP_LEVEL_ENTITY                    ; PB1Qsys                                                   ; PBL1          ; --                                                            ; --             ;
@@ -186,12 +186,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:09     ; 1.0                     ; 4738 MB             ; 00:00:08                           ;
-; Fitter                    ; 00:00:10     ; 1.0                     ; 4974 MB             ; 00:00:11                           ;
+; Analysis & Synthesis      ; 00:00:10     ; 1.0                     ; 4734 MB             ; 00:00:10                           ;
+; Fitter                    ; 00:00:12     ; 1.0                     ; 4983 MB             ; 00:00:12                           ;
 ; Assembler                 ; 00:00:01     ; 1.0                     ; 4580 MB             ; 00:00:01                           ;
-; TimeQuest Timing Analyzer ; 00:00:05     ; 1.0                     ; 4664 MB             ; 00:00:04                           ;
-; EDA Netlist Writer        ; 00:00:05     ; 1.0                     ; 4572 MB             ; 00:00:03                           ;
-; Total                     ; 00:00:30     ; --                      ; --                  ; 00:00:27                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 4668 MB             ; 00:00:03                           ;
+; EDA Netlist Writer        ; 00:00:04     ; 1.0                     ; 4571 MB             ; 00:00:03                           ;
+; Total                     ; 00:00:31     ; --                      ; --                  ; 00:00:29                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
